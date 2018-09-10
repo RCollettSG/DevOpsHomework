@@ -58,7 +58,7 @@ npm test
 
 The test for posts will fail ( as expected ) if the database has not been correctly setup.
 
-## Dev environment set up
+## Virtual Machine set up
 
 - Download Hashcorp Vagrant [Here](www.vagrantup.com)
 - Download Oracle VirtualBox [Here](www.virtualbox.org)
@@ -91,7 +91,7 @@ Vagrant.configure("2") do |config|
   # The network you want your VM to use
   config.vm.network("private_network", ip: "<Your IP address>")
   # The alias you would like to give that network
-  config.hostsupdater.aliases("developer.local")
+  config.hostsupdater.aliases("development.local")
 end
 ```
 - Now run vagrant
@@ -105,7 +105,8 @@ vagrant up
 ``` bash
 vagrant ssh
 ```
-- You should see this:
+- You should see this or something like this:    
+![Image of Vagrant ssh](readmeimg/vssh.png)
 
 - Now run an update on all the packages within your VM. An example for Ubuntu is shown below.
 ``` bash
@@ -116,5 +117,7 @@ sudo apt-get update
 sudo apt-get install nginx -y
 ```
 - You can now go to your browser and type in the name of your IP alias. You should see this:
+
+![Default nginx](readmeimg/defaultnginx.png)
 
 - Your virtual machine is ready!
