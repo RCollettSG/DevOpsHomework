@@ -2,7 +2,7 @@
 
 ## Description
 
-This app is intended for use with the Sparta Global Devops Stream as a sample app. You can clone the repo and use it as is but no changes will be accepted on this branch. 
+This app is intended for use with the Sparta Global Devops Stream as a sample app. You can clone the repo and use it as is but no changes will be accepted on this branch.
 
 To use the repo within your course you should fork it.
 
@@ -58,6 +58,63 @@ npm test
 
 The test for posts will fail ( as expected ) if the database has not been correctly setup.
 
+## Dev environment set up
 
+- Download Hashcorp Vagrant [Here](www.vagrantup.com)
+- Download Oracle VirtualBox [Here](www.virtualbox.org)
+- Install both onto your system.
+- Go into the console and cd into your repo
+``` bash
+cd <your repo name>
+```
+- Verify that vagrant is installed. Repeat steps if required.
+``` bash
+vagrant version
+```
+- Open VirtualBox
+- In your repo, initialise Vagrant
+``` bash
+vagrant init
+```
+- Once completed, a file called Vagrantfile should now be within your repo.
+- You now want to install the hostsupdater plugin
+``` bash
+vagrant plugin install hostsupdater
+```
+- Once complete, open your Vagrantfile in a text editor.
+- Remove all of the contents and input the following:
+``` ruby
+# Version of vagrant you would like to use
+Vagrant.configure("2") do |config|
+  # What OS you would like your VM to be. Example below
+  config.vm.box = "ubuntu/xenial64"
+  # The network you want your VM to use
+  config.vm.network("private_network", ip: "<Your IP address>")
+  # The alias you would like to give that network
+  config.hostsupdater.aliases("developer.local")
+end
+```
+- Now run vagrant
+``` bash
+vagrant up
+```
+- This will now install the OS and run the Virtual Machine (VM), you should see this in virtual box:
 
+![Image of VM](readmeimg/vbox.png)
+- Go back to the console and connect with your VM
+``` bash
+vagrant ssh
+```
+- You should see this:
 
+- Now run an update on all the packages within your VM. An example for Ubuntu is shown below.
+``` bash
+sudo apt-get update
+```
+- Now install nginx on your VM
+``` bash
+sudo apt-get install nginx -y
+```
+- You can now go to your browser and type in the name of your IP alias. You should see this:
+
+- Your virtual machine is ready!
