@@ -71,7 +71,7 @@ cd <your repo name>
 ``` bash
 vagrant version
 ```
-- Open VirtualBox
+- Open VirtualBox to ensure your VM will be running
 - In your repo, initialise Vagrant
 ``` bash
 vagrant init
