@@ -36,6 +36,7 @@ describe('Homepage', function() {
 //   });
 // });
 
+
 describe('Fibonacci', function() {
   it('should display the correct fibonacci value at /fibonacci/10 GET', function(done) {
     chai.request(server)
