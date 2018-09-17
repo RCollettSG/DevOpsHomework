@@ -121,3 +121,5 @@ sudo apt-get install nginx -y
 ![Default nginx](readmeimg/defaultnginx.png)
 
 - Your virtual machine is ready!
+
+# Testing Jenkins
